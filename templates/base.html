@@ -1,0 +1,31 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" data-temp="grid">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>Buy and Sell NFTs</title>
+    <meta content="Buy and Sell NFTs" name="description">  
+    <link href="{% static 'css/main.minb9d8.css' %}" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <p style="text-align:left;">
+            Buy and Sell NFTs 
+            <span style="float:right;">
+                {% if user.is_authenticated %}
+                    Hello <a href="{% url 'logout' %}">@{{user.username}}</a>
+                {% else %}
+                    <a href="{% url 'login' %}">Sign In</a>
+                {% endif %}
+            </span>
+        </p>
+    </header>  
+
+    {% block content %}
+    {% endblock content %}
+
+</body>
+</html>
+
