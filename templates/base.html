@@ -8,16 +8,17 @@
     <title>Buy and Sell NFTs</title>
     <meta content="Buy and Sell NFTs" name="description">  
     <link href="{% static 'css/main.minb9d8.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/bootstrap-grid.min.css' %}">
 </head>
 <body>
     <header class="header">
         <p style="text-align:left;">
-            Buy and Sell NFTs 
+            328 <span class="site-tagline">— buy and sell NFTs </span>
             <span style="float:right;">
                 {% if user.is_authenticated %}
-                    Hello <a href="{% url 'logout' %}">@{{user.username}}</a>
+                    <a href="{% url 'logout' %}">@{{user.username}}</a> / upload
                 {% else %}
-                    <a href="{% url 'login' %}">Sign In</a>
+                    <a href="{% url 'login' %}">Sign in</a>
                 {% endif %}
             </span>
         </p>

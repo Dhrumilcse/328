@@ -1,6 +1,31 @@
-<h2>Log In</h2>
-<form method="post">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit">Log In</button>
-</form>
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col"> </div>
+    
+        <div class="col-sm-8 col-9">
+            <header class="primary-section-header">
+                <h1 class="section-title"></h1>
+            </header>
+
+            <form method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <br>
+                <button class="submit-btn" type="submit" style="border:none; 
+                border-bottom: 1px solid gray;"> Log in </button>
+                <br><br>
+                <p>
+                    Don't have an account? <a href="#" style="border:none; 
+                    border-bottom: 1px solid gray;">Sign up</a>
+                </p>
+            </form>
+
+        </div>
+        
+    </div>
+</div>
+{% endblock content %}
