@@ -1,0 +1,40 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" data-temp="grid">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>Buy and Sell NFTs</title>
+    <meta content="Buy and Sell NFTs" name="description">  
+    <link href="{% static 'css/main.minb9d8.css' %}" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <p style="text-align:left;">
+            Buy and Sell NFTs 
+            <span style="float:right;">
+                Sign in
+            </span>
+        </p>
+    </header>    
+    
+    <main class="main grid-page">
+        <div class="posts">
+            <!-- Iterating over our db-->
+            {% for nft in object_list %}
+            <article class="thumbnail">
+                <a href="" class="thumbnail-figure-link" target="_blank" rel="noreferrer">
+                    <figure class="thumbnail-img-container">
+                        <img class="thumbnail-img" loading="lazy" src="{{nft.image.url}}" alt="{{nft.title}}">
+                    </figure>
+                </a>
+            </article> 
+            {% endfor %}           
+        </div>
+
+        <script src="{% static 'js/infinite.min.js' %}"></script>            
+
+    </main>
+</body>
+</html>
