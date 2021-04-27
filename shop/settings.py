@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'nft',
-    'storages'
+    'storages',
+    'accounts'
 ]
 
 MIDDLEWARE = [
@@ -134,6 +135,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Media
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+#Log-in
+LOGIN_REDIRECT_URL = 'home'
+LOGIN_URL = 'login'
 
 #S3
 AWS_ACCESS_KEY_ID = "AKIAS3BMDML6NFULETWF"

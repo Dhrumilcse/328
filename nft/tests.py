@@ -32,5 +32,3 @@ class HomePageTest(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, 'just a test')
         self.assertTemplateUsed(response, 'home.html')
-
-    
