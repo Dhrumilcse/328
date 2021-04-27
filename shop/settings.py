@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'nft',
     'storages',
     'accounts',
-    'widget_tweaks'
+    'widget_tweaks',
+    'payments.apps.PaymentsConfig', 
 ]
 
 MIDDLEWARE = [
@@ -151,3 +152,7 @@ AWS_S3_SIGNATURE_VERSION = "s3v4"
 AWS_S3_FILE_OVERWRITE = False
 AWS_DEFAULT_ACL = None
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+#Stripe Payment Config
+STRIPE_PUBLISHABLE_KEY = 'pk_test_3I4LVtpkg9y1sfbpkklaQm4F00jUsWZTkz'
+STRIPE_SECRET_KEY = 'sk_test_iCBKzr5uAlwBKn8Ma2QqNL3700GCo3JmTh'

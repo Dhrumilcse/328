@@ -2,18 +2,20 @@
 {% load static %}
 
 {% block content %}
-    <main class="main grid-page">
-        <div class="posts">
-            <!-- Iterating over our db-->
-            <article class="thumbnail">
-                <a href="" class="thumbnail-figure-link" target="_blank" rel="noreferrer">
-                    <figure class="thumbnail-img-container">
-                        <img class="thumbnail-img" loading="lazy" src="{{nft.image.url}}" alt="{{nft.title}}">
-                    </figure>
-                </a>
-            </article> 
-        
+    <main class="main">
+        <div class="posts-buy">
+            <figure class="single-page">
+                <img class="single-images" loading="lazy" src="{{nft.image.url}}" alt="{{nft.title}}">
+                <p style="padding-left: 11.9rem;">{{nft.title}} / 
+                    <span style="margin-left: 3px;">
+                        <button class="button is-primary" id="submitBtn" style="border-bottom: 1px solid gray;"> Buy </button>
+                    </span>
+                </p>
+            </figure>
         </div>
-        <script src="{% static 'js/infinite.min.js' %}"></script>            
+        
+        <script src="{% static 'js/infinite.min.js' %}"></script> 
+        <script src="{% static 'js/main.js' %}"></script>    
+        <script src="https://js.stripe.com/v3/"></script>     
     </main>
 {% endblock content %}
