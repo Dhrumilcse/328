@@ -16,7 +16,7 @@
             328 <span class="site-tagline">— buy and sell NFTs </span>
             <span style="float:right;">
                 {% if user.is_authenticated %}
-                    <a href="{% url 'logout' %}">@{{user.username}}</a> / upload
+                    <a href="{% url 'logout' %}">@{{user.username}}</a> / <a href="{% url 'upload' %}">upload</a>
                 {% else %}
                     <a href="{% url 'login' %}">Sign in</a>
                 {% endif %}
