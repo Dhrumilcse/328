@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+{% block content %}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col"> </div>
+    
+        <div class="col-sm-8 col-9">
+            <header class="primary-section-header">
+                <h1 class="section-title"></h1>
+            </header>
+
+            <form method="POST">
+                {% csrf_token %}
+                {% for field in form.visible_fields %}
+                        <p>
+                            {{ field.label_tag }}
+                            {% render_field field style="border:none;" %}
+
+                            {% for error in field.errors %}
+                                <p style="color: red">{{ error }}</p>
+                            {% endfor %}
+                        </p>
+                    {% endfor %}
+                <br>
+                <button class="submit-btn" type="submit" style="border-bottom: 1px solid gray;"> Signup </button>
+                <br><br>
+                <p>
+                    Already have an account? <a href="{% url 'login'%}" style="border-bottom: 1px solid gray;">Log in</a>
+                </p>
+            </form>
+
+        </div>
+        
+    </div>
+</div>
+{% endblock content %}

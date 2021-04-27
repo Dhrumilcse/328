@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'nft',
     'storages',
-    'accounts'
+    'accounts',
+    'widget_tweaks'
 ]
 
 MIDDLEWARE = [
