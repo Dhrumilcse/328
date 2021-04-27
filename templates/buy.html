@@ -5,15 +5,14 @@
     <main class="main grid-page">
         <div class="posts">
             <!-- Iterating over our db-->
-            {% for nft in object_list %}
             <article class="thumbnail">
-                <a href="{% url 'buy' id=nft.id %}" class="thumbnail-figure-link" target="_blank" rel="noreferrer">
+                <a href="" class="thumbnail-figure-link" target="_blank" rel="noreferrer">
                     <figure class="thumbnail-img-container">
                         <img class="thumbnail-img" loading="lazy" src="{{nft.image.url}}" alt="{{nft.title}}">
                     </figure>
                 </a>
             </article> 
-            {% endfor %}           
+        
         </div>
         <script src="{% static 'js/infinite.min.js' %}"></script>            
     </main>

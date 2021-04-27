@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <title>Buy and Sell NFTs</title>
+    <title>328 — Buy and Sell NFTs</title>
     <meta content="Buy and Sell NFTs" name="description">  
     <link href="{% static 'css/main.minb9d8.css' %}" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/bootstrap-grid.min.css' %}">
@@ -13,7 +13,7 @@
 <body>
     <header class="header">
         <p style="text-align:left;">
-            328 <span class="site-tagline">— buy and sell NFTs </span>
+            <a href="{% url 'home'%}">328</a> <span class="site-tagline">— buy and sell NFTs </span>
             <span style="float:right;">
                 {% if user.is_authenticated %}
                     <a href="{% url 'logout' %}">@{{user.username}}</a> / <a href="{% url 'upload' %}">upload</a>

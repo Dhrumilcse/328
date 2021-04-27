@@ -7,5 +7,5 @@ class Nft(models.Model):
     price = models.DecimalField(default=1, max_digits=5, decimal_places=2)
 
     def __str__(self):
-        return self.title
+        return self.id
     
