@@ -3,6 +3,18 @@
 
 {% block content %}
     <main class="main grid-page">
+        
+        <header class="header-2">
+            <p style="text-align:left;">
+                <form style="text-align:right;" action="{% url 'search_results' %}" method="get">
+                    sort by
+                    <!-- <input type="button" style="padding:0%; border-bottom: 1px solid gray;" name="new" value="new">
+                    <input type="button" style="padding:0%; border-bottom: 1px solid gray;" name="title" value="title"> -->
+                    / <input size="4" name="q" type="text" placeholder="search">
+                </form> 
+            </p>
+        </header>
+        
         <div class="posts">
             <!-- Iterating over our db-->
             {% for nft in object_list %}

@@ -5,4 +5,4 @@ class NftForm(forms.ModelForm):
 
     class Meta:
         model = Nft
-        fields = ['title', 'image',  'price']
+        fields = ['title', 'image',  'price', 'tags']
