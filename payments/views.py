@@ -7,14 +7,18 @@ from django.http.response import JsonResponse
 from django.views.generic import TemplateView
 from django.views.decorators.csrf import csrf_exempt
 import stripe
+import random
 
 #Log in required for buy view
 @login_required
 def buyView(request, id):
+    all_nft = Nft.objects.all()
+    random_nft = random.sample(list(all_nft), 3)
     nft = Nft.objects.get(id=id)
 
     context = {
-        'nft': nft
+        'nft': nft,
+        'all_nft': random_nft
     }
 
     return render(request, 'buy.html', context)
