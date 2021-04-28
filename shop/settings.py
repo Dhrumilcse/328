@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-m#(vol5*wzt%tg&-c%(+7^ap=-y93cp%9i30u)=morf+b@e=y5
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['nft328.herokuapp.com']
+ALLOWED_HOSTS = ['nft328.herokuapp.com','127.0.0.1']
 
 # Parse database configuration from $DATABASE_URL
 DATABASES = { 'default' : dj_database_url.config()}
