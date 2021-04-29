@@ -6,20 +6,19 @@
     <header class="header-2">
         <p style="text-align:left;">
             <form style="text-align:right;" action="{% url 'search_results' %}" method="get">
-                sort by
+                <span class="site-tagline">sort by</span>
                 <!-- <input type="button" style="padding:0%; border-bottom: 1px solid gray;" name="new" value="new">
                 <input type="button" style="padding:0%; border-bottom: 1px solid gray;" name="title" value="title"> -->
-                / <input size="4" name="q" type="text" placeholder="search">
+                / <input size="8" name="q" type="text" placeholder="search">
             </form> 
         </p>
     </header>
 
     <main class="main grid-page">
         <div class="posts">
-            <!-- Iterating over our db-->
             {% for nft in object_list %}
             <article class="thumbnail">
-                <a href="{% url 'buy' id=nft.id %}" class="thumbnail-figure-link" target="_blank" rel="noreferrer">
+                <a href="{% url 'buy' id=nft.id %}" class="thumbnail-figure-link" rel="noreferrer">
                     <figure class="thumbnail-img-container">
                         <img class="thumbnail-img" loading="lazy" src="{{nft.image.url}}" alt="{{nft.title}}">
                     </figure>

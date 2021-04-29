@@ -12,17 +12,25 @@ import random
 #Log in required for buy view
 @login_required
 def buyView(request, id):
+    
+    # Randomly select 3 nft to recommend
     all_nft = Nft.objects.all()
     random_nft = random.sample(list(all_nft), 3)
-    nft = Nft.objects.get(id=id)
+    buy_nft = Nft.objects.get(id=id)
+
+    # Basic Recommendation using tags - WIP
+    # all_objects = Nft.objects.all()
+    # all_tags = []
+    # for i in range(len(all_objects)):
 
     context = {
-        'nft': nft,
-        'all_nft': random_nft
+        'buy_nft': buy_nft,
+        'random_nft': random_nft,
     }
 
     return render(request, 'buy.html', context)
 
+#Stripe setup
 @csrf_exempt
 def stripe_config(request):
     if request.method == 'GET':
@@ -53,9 +61,10 @@ def create_checkout_session(request):
         except Exception as e:
             return JsonResponse({'error': str(e)})
 
+#Success redirect
 class SuccessView(TemplateView):
     template_name = 'success.html'
 
-
+#Cancel redirect
 class CancelledView(TemplateView):
     template_name = 'cancelled.html'

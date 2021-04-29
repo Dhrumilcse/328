@@ -5,26 +5,29 @@
     <main class="main">
         <div class="posts-buy">
             <figure class="single-page">
-                <img class="single-images" loading="lazy" src="{{nft.image.url}}" alt="{{nft.title}}">
-                <p style="padding-left: 11.9rem;">{{nft.title}} / 
-                    <span style="margin-left: 3px;">
-                        <button class="button is-primary" id="submitBtn" style="border-bottom: 1px solid gray;"> Buy </button>
-                    </span>
+                <img class="single-images" loading="lazy" src="{{buy_nft.image.url}}" alt="{{buy_nft.title}}">
+                <p class="p-title">{{buy_nft.title}} </p>
+                <p class="p-buy" >
+                    <button class="button is-primary" id="submitBtn"> 
+                        Buy for {{buy_nft.price}} <img src="{% static 'icon/arrow-up-right.svg' %}" width=10 height=10 alt="Hyperlink arrow">
+                    </button>
                 </p>
+                <p class="p-tags">Tags / {{buy_nft.tags}}</p>
+
             </figure>
         </div>
         <h1 style="text-align: center; padding-top: 1rem; padding-bottom: 2rem;">Similar Popular NFTs</h1>
         <div class="posts">
             <!-- Iterating over our db-->
-            {% for nft in all_nft %}
-            <article class="thumbnail">
+            {% for nft in random_nft %}
+            <article class="thumbnail" style="padding-bottom: 1rem;">
                 <a href="{% url 'buy' id=nft.id %}" class="thumbnail-figure-link" target="_blank" rel="noreferrer">
                     <figure class="thumbnail-img-container">
                         <img class="thumbnail-img" loading="lazy" src="{{nft.image.url}}" alt="{{nft.title}}">
                     </figure>
                 </a>
             </article> 
-            {% endfor %}           
+            {% endfor %} 
         </div>
     </main>
         <script src="{% static 'js/infinite.min.js' %}"></script> 
