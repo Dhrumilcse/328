@@ -20,7 +20,7 @@ Instructions to run locally goes here
 Working with images requires successful generation and deletion of the same. Using a helper function to create a temporary test_image to test whether or not our model can upload a new image. Payments, Account, and Nft (main app): each application contains test cases in their respective tests.py files.
 
 ``` 
-# shop/nft/tests.py
+# 328/nft/tests.py
 
 # Image upload test
 class ImageUploadTest(TestCase):
