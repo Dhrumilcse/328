@@ -11,12 +11,12 @@
                 <h1 class="section-title"></h1>
             </header>
 
-            <form method="post" enctype="multipart/form-data">
+            <form method="post" enctype="multipart/form-data" ">
                 {% csrf_token %}
                 {% for field in form.visible_fields %}
                         <p>
                             {{ field.label_tag }}
-                            {% render_field field style="border:none;" %}
+                            {% render_field field style="border: 1px solid gray;" %}
 
                             {% for error in field.errors %}
                                 <p style="color: red">{{ error }}</p>
