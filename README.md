@@ -4,13 +4,9 @@ A minimal platform to let you buy and sell nfts, built with Django, PostgreSQL, 
 <img src="https://github.com/Dhrumilcse/328/blob/main/readme_media/home.png"> <br>
 
 ## Features
-1. A "buy" page that won't let you in if you are not an authenticated user. Also, a recommendation of other similar images (selecting random at the moment, a simple recommendation based on tags is WIP) <br><br>
-<!-- <img src="https://github.com/Dhrumilcse/328/blob/main/readme_media/buy-gif.gif"> <br> -->
-
-2. AWS S3.
-
+1. A "buy" page that won't let you in if you are not an authenticated user. Also, a recommendation of other similar images (selecting random at the moment, a simple recommendation based on tags is WIP)
+2. AWS S3
 3. Search for an image (using title and/or tags)
-
 4. Payment was handled using secure Stripe Checkout API. <br><br>
 <img src="https://github.com/Dhrumilcse/328/blob/main/readme_media/payment.png"> <br>
 
