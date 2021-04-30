@@ -52,7 +52,13 @@ cd shop
 pip install -r requirements.txt
 ```
 
-5. Run server
+5. Migrate database
+```
+python manage.py makemigrations
+python manage.py migrate
+```
+
+6. Run server
 ```
 python manage.py runserver
 ```
