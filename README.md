@@ -4,8 +4,7 @@ A minimal platform to let you buy and sell nfts, built with Django, PostgreSQL, 
 <add an image>
 
 ## Features
-
-Talk about the features and yet to implement features
+<img src="https://github.com/Dhrumilcse/328/blob/main/readme_media/buy-gif.gif" width=50%>
 
 <add a gif buy page>
 
