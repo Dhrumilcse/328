@@ -22,13 +22,17 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 # SECRET_KEY = 'django-insecure-m#(vol5*wzt%tg&-c%(+7^ap=-y93cp%9i30u)=morf+b@e=y5'
-SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-m#(vol5*wzt%tg&-c%(+7^ap=-y93cp%9i30u)=morf+b@e=y5')
+<<<<<<< HEAD
+=======
+SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True
-DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
+DEBUG = int(os.environ.get("DEBUG", default=0))
+>>>>>>> 35cef7a06319544c826c56b8e870b2724d0172a2
 
-ALLOWED_HOSTS = ['nft328.herokuapp.com','127.0.0.1']
+# ALLOWED_HOSTS = ['nft328.herokuapp.com','127.0.0.1']
+ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS").split(" ")
 
 # Application definition
 
@@ -81,17 +85,26 @@ WSGI_APPLICATION = 'shop.wsgi.application'
 # Database- PostgreSQL
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'shop',
+#         'USER' : 'dhrumil',
+#         'PASSWORD' : '14co33@shop',
+#         'HOST' : 'localhost',
+#         'PORT' : '5432',
+#     }
+# }
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'shop',
-        'USER' : 'dhrumil',
-        'PASSWORD' : '14co33@shop',
-        'HOST' : 'localhost',
-        'PORT' : '5432',
+    "default": {
+        "ENGINE": os.environ.get("PgSQL_ENGINE", "django.db.backends.sqlite3"),
+        "NAME": os.environ.get("PgSQL_DATABASE", os.path.join(BASE_DIR, "db.sqlite3")),
+        "USER": os.environ.get("PgSQL_USER", "user"),
+        "PASSWORD": os.environ.get("PgSQL_PASSWORD", "password"),
+        "HOST": os.environ.get("PgSQL_HOST", "localhost"),
+        "PORT": os.environ.get("PgSQL_PORT", "5432"),
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
