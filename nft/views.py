@@ -9,6 +9,7 @@ from django.db.models import Q
 class HomePageView(ListView):
     model = Nft
     template_name = 'home.html'
+    ordering = ['-publishedAt']
 
 #Upload file view
 class UploadNftView(CreateView):
