@@ -4,7 +4,7 @@ A minimal platform to let you buy and sell nfts, built with Django, PostgreSQL, 
 https://user-images.githubusercontent.com/17984133/116750488-8b486000-a9d0-11eb-9c94-22fcfd1a3ce4.mp4
 
 ## Features
-1. Upload/buy page won't let you in if you are not an authenticated user (access control)
+1. [Buy](https://nft328.herokuapp.com/buy/2) page won't let you in if you are not an authenticated user (access control)
 2. Using AWS S3 for securely storing and retrieving user uploaded images directly, and using [WhiteNoise](http://whitenoise.evans.io/en/stable/) to serve static files since it serves compressed content and compression can make dramatic reductions in the bandwidth required for your CSS and JS.
 3. A recommendation of other similar images (selecting random at the moment, a simple recommendation based on tags is WIP)
 4. Search for an image (based on title and/or tags)
