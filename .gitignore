@@ -1,5 +1,6 @@
 __pycache__  
-.DS_Store 
+.DS_Store
+db.sqlite3 
 /usr
 whole.json
 staticfiles/
