@@ -22,14 +22,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 # SECRET_KEY = 'django-insecure-m#(vol5*wzt%tg&-c%(+7^ap=-y93cp%9i30u)=morf+b@e=y5'
-<<<<<<< HEAD
-=======
-SECRET_KEY = os.environ.get("SECRET_KEY")
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-m#(vol5*wzt%tg&-c%(+7^ap=-y93cp%9i30u)=morf+b@e=y5')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True
-DEBUG = int(os.environ.get("DEBUG", default=0))
->>>>>>> 35cef7a06319544c826c56b8e870b2724d0172a2
+DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 
 # ALLOWED_HOSTS = ['nft328.herokuapp.com','127.0.0.1']
 ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS").split(" ")
