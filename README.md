@@ -1,7 +1,7 @@
 # 328
 A minimal platform to let you buy and sell nfts, built with Django, PostgreSQL, and Heroku.
 
-<img src="https://github.com/Dhrumilcse/328/blob/main/readme_media/home.png"> <br>
+https://user-images.githubusercontent.com/17984133/116750488-8b486000-a9d0-11eb-9c94-22fcfd1a3ce4.mp4
 
 ## Features
 1. Upload/buy page won't let you in if you are not an authenticated user (access control)
