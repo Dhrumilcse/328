@@ -15,7 +15,49 @@ A minimal platform to let you buy and sell nfts, built with Django, PostgreSQL, 
 
 ## Run locally
 
-Instructions to run locally goes here
+Working on containerizing the application for easier local runs. Until thenl, please follow instructions.
+1. Clone the repository
+```
+git clone https://github.com/Dhrumilcse/328.git
+```
+2. Rename to maintin local settings
+```
+mv 328 shop
+```
+
+```
++-- 328_local
+|   +-- shop
+```
+
+3. Create and activate virtual environment
+```
+# Create
+virtualenv venv --python=python3
+
+# Activate
+source venv/bin/activate (for mac)
+venv\Scripts\activate (for win)
+```
+
+```
++-- 328_local
+|   +-- shop
+|   +-- venv
+```
+
+4. Install dependencies
+```
+cd shop
+pip install -r requirements.txt
+```
+
+5. Run server
+```
+python manage.py runserver
+```
+
+Visit [127.0.0.1:8000/](127.0.0.1:8000/) and you will see the app running.
 
 ## Test Cases
 Working with images requires successful generation and deletion of the same. Using a helper function to create a temporary test_image to test whether or not our model can upload a new image. Payments, Account, and Nft (main app): each application contains test cases in their respective tests.py files.
