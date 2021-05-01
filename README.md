@@ -1,7 +1,9 @@
 # 328
 A minimal platform to let you buy and sell nfts, built with Django, PostgreSQL, and Heroku.
 
-https://user-images.githubusercontent.com/17984133/116750488-8b486000-a9d0-11eb-9c94-22fcfd1a3ce4.mp4
+
+https://user-images.githubusercontent.com/17984133/116792174-0b340000-aa8d-11eb-8b39-a6fd5c9f39c9.mp4
+
 
 ## Features
 1. [Buy](https://nft328.herokuapp.com/buy/2) page won't let you in if you are not an authenticated user (access control)
@@ -31,7 +33,7 @@ class ImageUploadTest(TestCase):
 
 ## Run locally
 
-Working on containerizing the application for easier local runs. Until thenl, please follow instructions.
+Working on containerizing the application for easier local runs. Until then, please follow instructions.
 1. Clone the repository
 ```
 git clone https://github.com/Dhrumilcse/328.git
@@ -79,7 +81,7 @@ python manage.py migrate
 python manage.py runserver
 ```
 
-Visit [127.0.0.1:8000/](127.0.0.1:8000/) and you will see the app running.
+Visit [127.0.0.1:8000/](http://127.0.0.1:8000/) and you will see the app running.
 
 ## Upcoming Features
  - [ ] Containerize application using Docker for easier local tests
