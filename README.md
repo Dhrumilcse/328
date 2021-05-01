@@ -11,7 +11,23 @@ https://user-images.githubusercontent.com/17984133/116750488-8b486000-a9d0-11eb-
 5. Payment was handled using secure Stripe Checkout API. <br><br>
 <img src="https://github.com/Dhrumilcse/328/blob/main/readme_media/payment.png"> <br>
 
-<add a gif buy page>
+## Test Cases
+Working with images requires successful generation and deletion of the same. Using a helper function to create a temporary test_image to test whether or not our model can upload a new image. Payments, Account, and Nft (main app): each application contains test cases in their respective tests.py files.
+
+``` 
+# 328/nft/tests.py
+
+# Image upload test
+class ImageUploadTest(TestCase):
+
+    # Changing media_root to a temp dir to prevent filiing our media dir with garbage
+    @override_settings(MEDIA_ROOT=tempfile.gettempdir())
+    def test_image_upload(self):
+        temp_file = tempfile.NamedTemporaryFile()
+        test_image = get_temporary_image(temp_file)
+        image = Nft.objects.create(image=test_image.name)
+        self.assertEqual(len(Nft.objects.all()), 1)
+  ```
 
 ## Run locally
 
@@ -64,25 +80,6 @@ python manage.py runserver
 ```
 
 Visit [127.0.0.1:8000/](127.0.0.1:8000/) and you will see the app running.
-
-## Test Cases
-Working with images requires successful generation and deletion of the same. Using a helper function to create a temporary test_image to test whether or not our model can upload a new image. Payments, Account, and Nft (main app): each application contains test cases in their respective tests.py files.
-
-``` 
-# 328/nft/tests.py
-
-# Image upload test
-class ImageUploadTest(TestCase):
-
-    # Changing media_root to a temp dir to prevent filiing our media dir with garbage
-    @override_settings(MEDIA_ROOT=tempfile.gettempdir())
-    def test_image_upload(self):
-        temp_file = tempfile.NamedTemporaryFile()
-        test_image = get_temporary_image(temp_file)
-        image = Nft.objects.create(image=test_image.name)
-        self.assertEqual(len(Nft.objects.all()), 1)
-  ```
-
 
 ## Upcoming Features
  - [ ] Containerize application using Docker for easier local tests
