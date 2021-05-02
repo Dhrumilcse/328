@@ -179,8 +179,9 @@ input {
 	left: 0;
 	right: 0;
 	z-index: 8000;
-	padding-left: 1rem;
+	/* padding-left: 1rem; */
 	padding-bottom: 0.5rem;
+	padding-right: 1rem;
 	background: var(--c-bg);
 	text-align: center;
 	line-height: 1rem;
