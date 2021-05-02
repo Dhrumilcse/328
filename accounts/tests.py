@@ -1,11 +1,11 @@
 from django.test import TestCase
-from django.contrib.auth import get_user_model
+from django.contrib.auth.models import User
 
 # Create your tests here.
 class BlogTests(TestCase):
 
     def setUp(self):
-        self.user = get_user_model().objects.create_user(
+        self.user = User.objects.create_user(
             username='dhrumil',
             email='dhrumil@test.com',
             password='iloveshopify'

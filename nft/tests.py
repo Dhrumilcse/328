@@ -4,6 +4,7 @@ from .models import Nft
 from PIL import Image
 import tempfile
 from django.test import override_settings
+from django.contrib.auth.models import User
 
 # Helper function for to create a temp image for image test
 def get_temporary_image(temp_file):
@@ -38,7 +39,18 @@ class HomePageTest(TestCase):
     
     # Setup object
     def setUp(self):
-        Nft.objects.create(title='Reminder: Start that business', price='420.69', tags="shopify")
+        self.user = User.objects.create_user(
+            username='testuser',
+            email='test@email.com',
+            password='secret'
+        )
+        
+        self.nft = Nft.objects.create(
+            title='Reminder: Start that business', 
+            price='420.69', 
+            tags="shopify", 
+            uploaded_by=self.user,
+        )
 
     # Check the content of title
     def test_title_content(self):
@@ -58,14 +70,36 @@ class HomePageTest(TestCase):
         expected_object_name = f'{nft.tags}'
         self.assertEquals(expected_object_name, 'shopify')
 
+    #Check user login
+    def test_title_content(self):
+        nft = Nft.objects.get()
+        expected_object_name = f'{nft.tags}'
+        self.assertEquals(expected_object_name, 'shopify')
 
 # Image upload test
 class ImageUploadTest(TestCase):
+
+    def setUp(self):
+        self.user = User.objects.create_user(
+            username='dhrumil',
+            email='test@email.com',
+            password='iloveshopify'
+        )
+        
+        self.assertTrue(self.client.login(username='dhrumil', password='iloveshopify'))
 
     # Changing media_root to a temp dir to prevent filiing our media dir with garbage
     @override_settings(MEDIA_ROOT=tempfile.gettempdir())
     def test_image_upload(self):
         temp_file = tempfile.NamedTemporaryFile()
         test_image = get_temporary_image(temp_file)
-        image = Nft.objects.create(image=test_image.name)
+        image = Nft.objects.create(image=test_image.name, uploaded_by=self.user)
         self.assertEqual(len(Nft.objects.all()), 1)
+    
+    @override_settings(MEDIA_ROOT=tempfile.gettempdir())
+    def test_image_delete(self):
+        temp_file = tempfile.NamedTemporaryFile()
+        test_image = get_temporary_image(temp_file)
+        image = Nft.objects.create(image=test_image.name, uploaded_by=self.user, id=1)
+        image.delete()
+        self.assertEqual(len(Nft.objects.all()), 0)

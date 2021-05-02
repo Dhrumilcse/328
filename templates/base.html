@@ -16,7 +16,7 @@
             <a href="{% url 'home'%}">328</a> <span class="site-tagline">— buy and sell nft </span>
             <span style="float:right;">
                 {% if user.is_authenticated %}
-                    <a href="{% url 'logout' %}">@{{user.username}}</a> / <a href="{% url 'upload' %}">upload</a>
+                    <a href="{% url 'profile' %}">@{{user.username}}</a>
                 {% else %}
                     <a href="{% url 'login' %}">sign in</a> 
                 {% endif %}
