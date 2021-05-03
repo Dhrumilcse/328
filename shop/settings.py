@@ -21,11 +21,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = 'django-insecure-m#(vol5*wzt%tg&-c%(+7^ap=-y93cp%9i30u)=morf+b@e=y5'
-SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-m#(vol5*wzt%tg&-c%(+7^ap=-y93cp%9i30u)=morf+b@e=y5')
+SECRET_KEY = "SECRET_KEY"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = True
 DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 
 ALLOWED_HOSTS = ['nft328.herokuapp.com','127.0.0.1']
@@ -81,16 +79,6 @@ WSGI_APPLICATION = 'shop.wsgi.application'
 # Database- PostgreSQL
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'shop',
-#         'USER' : 'dhrumil',
-#         'PASSWORD' : '14co33@shop',
-#         'HOST' : 'localhost',
-#         'PORT' : '5432',
-#     }
-# }
 DATABASES = {
     "default": {
         "ENGINE": os.environ.get("PgSQL_ENGINE", "django.db.backends.sqlite3"),
@@ -161,19 +149,18 @@ LOGIN_REDIRECT_URL = 'home'
 LOGIN_URL = 'login'
 
 #S3
-AWS_ACCESS_KEY_ID = "AKIAS3BMDML6NFULETWF"
-AWS_SECRET_ACCESS_KEY = "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"
-AWS_STORAGE_BUCKET_NAME = "nftbucket-shopify"
+AWS_ACCESS_KEY_ID = "AWS_ACCESS_KEY_ID"
+AWS_SECRET_ACCESS_KEY = "AWS_SECRET_ACCESS_KEY"
+AWS_STORAGE_BUCKET_NAME = "AWS_STORAGE_BUCKET_NAME"
 AWS_S3_REGION_NAME = "us-east-2"
 AWS_S3_SIGNATURE_VERSION = "s3v4"
-
 AWS_S3_FILE_OVERWRITE = False
 AWS_DEFAULT_ACL = None
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 #Stripe Payment Config
-STRIPE_PUBLISHABLE_KEY = 'pk_test_3I4LVtpkg9y1sfbpkklaQm4F00jUsWZTkz'
-STRIPE_SECRET_KEY = 'sk_test_iCBKzr5uAlwBKn8Ma2QqNL3700GCo3JmTh'
+STRIPE_PUBLISHABLE_KEY = "STRIPE_PUBLISHABLE_KEY"
+STRIPE_SECRET_KEY = "STRIPE_SECRET_KEY"
 
 # Heroku DB config
 db_from_env = dj_database_url.config(conn_max_age=500)
