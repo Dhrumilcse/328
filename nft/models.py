@@ -10,6 +10,7 @@ class Nft(models.Model):
     tags = models.CharField(null=True, max_length=100)
     publishedAt = models.DateTimeField(default=timezone.now)
     uploaded_by = models.ForeignKey(User, db_column="username", on_delete=models.CASCADE)
+    quantity = models.IntegerField(null=False, default='5')
 
     def __str__(self):
         return self.title
