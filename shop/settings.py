@@ -161,8 +161,8 @@ AWS_DEFAULT_ACL = None
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 #Stripe Payment Config
-STRIPE_PUBLISHABLE_KEY = "STRIPE_PUBLISHABLE_KEY"
-STRIPE_SECRET_KEY = "STRIPE_SECRET_KEY"
+STRIPE_PUBLISHABLE_KEY = os.environ.get('STRIPE_PUBLISHABLE_KEY')
+STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY')
 
 # Heroku DB config
 db_from_env = dj_database_url.config(conn_max_age=500)
