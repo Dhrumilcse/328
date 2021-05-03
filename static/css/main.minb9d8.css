@@ -290,14 +290,14 @@ input {
 
 @media (min-width: 1200px) {
 	.posts-buy-thumbnails  {
-		grid-template-columns: 1fr 1fr 1fr
+		grid-template-columns: 1fr 1fr 1fr;
 	}
 }
 
 
 @media (min-width: 910px) {
 	.posts-buy-thumbnails  {
-		grid-template-columns: repeat(auto-fill, minmax(450px, 1fr))
+		grid-template-columns: repeat(auto-fill, min(450px, 1fr))
 	}
 }
 
