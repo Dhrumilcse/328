@@ -330,6 +330,8 @@ input {
 	max-width: 40rem
 }
 
+.search-none { text-align: center !important; }
+
 .single-info {
 	text-align: center
 }
