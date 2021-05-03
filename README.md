@@ -1,8 +1,7 @@
 # 328
 A minimal platform to let you buy and sell nfts, built with Django, PostgreSQL, and Heroku. Submission for Shopify Data Developer Challenge Fall 2021.
 
-
-https://user-images.githubusercontent.com/17984133/116792174-0b340000-aa8d-11eb-8b39-a6fd5c9f39c9.mp4
+https://user-images.githubusercontent.com/17984133/116902775-8b7f7000-ac09-11eb-87ca-5800b4f42867.mp4
 
 
 ## Features
@@ -96,6 +95,6 @@ Visit [127.0.0.1:8000/](http://127.0.0.1:8000/) and you will see the app running
 
 ## Upcoming Features
  - [ ] Containerize application using Docker for easier local tests
- - [ ] Delete Image
+ - [x] Delete Image
  - [ ] Sort by New, Old, and Title
  - [ ] Upload Bulk Images
