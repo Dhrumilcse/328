@@ -19,7 +19,7 @@
                 border-bottom: 1px solid gray;"> Log in </button>
                 <br><br>
                 <p>
-                    Don't have an account? <a href="{% url 'signup'%}" style="border:none; 
+                    Login using <a href="{% url 'social:begin' 'github' %}" style="border-bottom: 1px solid gray;">Github</a> / Don't have an account? <a href="{% url 'signup'%}" style="border:none; 
                     border-bottom: 1px solid gray;">Sign up</a>
                 </p>
             </form>
