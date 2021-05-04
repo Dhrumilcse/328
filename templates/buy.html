@@ -6,7 +6,8 @@
         <div class="posts-buy">
             <figure class="single-page">
                 <img class="single-images" loading="lazy" src="{{buy_nft.image.url}}" alt="{{buy_nft.title}}">
-                <p class="p-title">{{buy_nft.title}} </p>
+                <p class="p-title">{{buy_nft.title}} 
+                <span class="p-tag">by @{{buy_nft.uploaded_by}}</span></p>
                 <p class="p-buy" >
                     <button class="button is-primary" id="submitBtn"> 
                         Buy for {{buy_nft.price}} <img src="{% static 'icon/arrow-up-right.svg' %}" width=10 height=10 alt="Hyperlink arrow">
