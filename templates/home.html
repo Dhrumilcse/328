@@ -25,8 +25,12 @@
                     </figure>
                 </a>
             </article> 
-            {% endfor %}           
-        </div>
+            {% endfor %} 
+        </div>   
+            <h1 style="padding: 1rem; text-align: center;">
+                <a href="{% url 'signup' %}" style="border-bottom: 1px solid gray;">sign up</a>
+                now to join {{user_count}} active users.
+            </h1>       
         <script src="{% static 'js/infinite.min.js' %}"></script>            
     </main>
 {% endblock content %}

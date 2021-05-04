@@ -14,12 +14,22 @@ class HomePageView(ListView):
     template_name = 'home.html'
     ordering = ['-publishedAt']
 
+    #Add additional context for user_count
+    def get_context_data(self, **kwargs):
+        # Call the base implementation first to get a context
+        context = super().get_context_data(**kwargs)
+        user = User.objects.all()
+        user_count = len(user)
+        context['user_count'] = user_count
+        return context
+
 #Profile View
 @login_required
 def profilePage(request):
     user = User.objects.get(username=request.user)
     user_id = user.id
     object_list = Nft.objects.filter(uploaded_by__id=user_id)
+    ordering = ['-publishedAt']
     
     context = {
         'object_list': object_list,
