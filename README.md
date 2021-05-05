@@ -6,7 +6,7 @@ https://user-images.githubusercontent.com/17984133/116902775-8b7f7000-ac09-11eb-
 
 ## Features
 1. Authentication and authorization using Django's inbuilt system which uses [PBKDF2](https://en.wikipedia.org/wiki/PBKDF2) algorithm with a SHA256 hash to store passwords. In addition, extended authentication support for third-party, in this case Github, using OAuth 2.0
-1. [Buy](https://nft328.herokuapp.com/buy/2), [Profile](https://nft328.herokuapp.com/profile), [Upload](https://nft328.herokuapp.com/profile), and [Delete](https://nft328.herokuapp.com/3/delete) pages won't let you in if you are not an authenticated user (access control)
+1. [Buy](https://nft328.herokuapp.com/buy/14), [Profile](https://nft328.herokuapp.com/profile), [Upload](https://nft328.herokuapp.com/profile), and [Delete](https://nft328.herokuapp.com/14/delete) pages won't let you in if you are not an authenticated user (access control)
 2. Using AWS S3 for directly and securely storing and retrieving user uploaded images (using [Boto3](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html)), and using [WhiteNoise](http://whitenoise.evans.io/en/stable/) to serve static files since it serves compressed content and compression can make dramatic reductions in the bandwidth required for your CSS and JS.
 3. A recommendation of other similar images (selecting random at the moment, a simple recommendation based on tags is WIP)
 4. Search for an image (based on title and/or tags)
