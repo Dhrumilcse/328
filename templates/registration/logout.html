@@ -4,18 +4,11 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col"> </div>
-    
-        <div class="col-sm-8 col-9">
-            <header class="primary-section-header">
-                <h1 class="section-title"></h1>
-            </header>
-
-            <p>You have been successfully logged out.</p><br>
-            <p>
-                <a href="{% url 'login' %}" style="border-bottom: 1px solid gray;">Log in</a> again? 
-            </p>
-            <p>
+        <div class="col-4"> </div>
+        <div class="col-sm-8 col-4">
+           
+            <p style="margin-left: 1cm; margin-top: 3.5cm;">You have been successfully logged out.<br><br>
+                <a href="{% url 'login' %}" style="border-bottom: 1px solid gray;">Log in</a> again? <br>
                 or you can just browse <a href="{% url 'home' %}" style="border-bottom: 1px solid gray;">328</a>.
             </p>
 
