@@ -1,31 +1,34 @@
 {% extends 'base.html' %}
+{% load widget_tweaks %}
 
 {% block content %}
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col"> </div>
-    
-        <div class="col-sm-8 col-9">
-            <header class="primary-section-header">
-                <h1 class="section-title"></h1>
-            </header>
-
-            <form method="POST">
+        <div class="col-4"> </div>
+        <div class="col-sm-8 col-4">
+            <form method="POST" style="margin-left: 1cm; margin-top: 3.5cm;">
                 {% csrf_token %}
-                {{ form.as_p }}
-                <br>
-                <button class="submit-btn" type="submit" style="border:none; 
-                border-bottom: 1px solid gray;"> Log in </button>
+                {% for field in form.visible_fields %}
+                    <p style="margin-bottom: 0.5cm;">
+                        {{ field.label_tag }}<br>
+                        {% render_field field style="border:1px solid gray;" %}
+                        
+                        {% for error in field.errors %}
+                            <p style="color: red">{{ error }}</p>
+                        {% endfor %}
+                    </p>
+                {% endfor %}
+                <button class="submit-btn" type="submit" style="border-bottom: 1px solid gray; margin-top: 0.25cm;"> Log in </button>
                 <br><br>
                 <p>
-                    Login using <a href="{% url 'social:begin' 'github' %}" style="border-bottom: 1px solid gray;">Github</a> / Don't have an account? <a href="{% url 'signup'%}" style="border:none; 
+                    Login using <a href="{% url 'social:begin' 'github' %}" style="border-bottom: 1px solid gray;">Github</a><br>
+                    Don't have an account? <a href="{% url 'signup'%}" style="border:none; 
                     border-bottom: 1px solid gray;">Sign up</a>
                 </p>
             </form>
-
         </div>
-        
+        <div class="col-4"> </div>
     </div>
 </div>
 {% endblock content %}

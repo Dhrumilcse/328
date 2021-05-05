@@ -84,9 +84,8 @@ input {
 
 .primary-section-header {
     padding-top: 5rem;
-    padding-bottom: 2rem;
+	padding-bottom: 2rem;
     /* border-bottom: 1px solid var(--c-gray-light); */
-
 }
 
 .site-tagline {
