@@ -1,25 +1,34 @@
 {% extends 'base.html' %}
 {% load static %}
 
+<!-- Extending base.html-->
 {% block content %}
     <main class="main">
         <div class="posts-buy">
             <figure class="single-page">
+                <!-- Buy Image -->
                 <img class="single-images" loading="lazy" src="{{buy_nft.image.url}}" alt="{{buy_nft.title}}">
+                
+                <!-- Title and User -->
                 <p class="p-title">{{buy_nft.title}} 
-                <span class="p-tag">by @{{buy_nft.uploaded_by}}</span></p>
+                    <span class="p-tag">by @{{buy_nft.uploaded_by}}</span>
+                </p>
+
+                <!-- Price -->
                 <p class="p-buy" >
                     <button class="button is-primary" id="submitBtn"> 
                         Buy for {{buy_nft.price}} <img src="{% static 'icon/arrow-up-right.svg' %}" width=10 height=10 alt="Hyperlink arrow">
                     </button>
                 </p>
-                <p class="p-tags">Tags / {{buy_nft.tags}}</p>
 
+                <!-- Tags -->
+                <p class="p-tags">Tags / {{buy_nft.tags}}</p>
             </figure>
         </div>
+
+        <!-- Similar Recommended NFT -->
         <h1 style="text-align: center; padding-top: 1rem; padding-bottom: 2rem;">Similar Popular NFTs</h1>
         <div class="posts-buy-thumbnails">
-            <!-- Iterating over our db-->
             {% for nft in random_nft %}
             <article class="thumbnail" style="padding-bottom: 1rem;">
                 <a href="{% url 'buy' id=nft.id %}" class="thumbnail-figure-link" target="_blank" rel="noreferrer">
@@ -30,7 +39,8 @@
             </article> 
             {% endfor %} 
         </div>
-    </main>
+
+        <!-- JS Scripts -->
         <script src="{% static 'js/infinite.min.js' %}"></script> 
         <script src="{% static 'js/main.js' %}"></script>    
         <script src="https://js.stripe.com/v3/"></script>     

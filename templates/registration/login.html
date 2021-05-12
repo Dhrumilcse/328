@@ -5,7 +5,10 @@
 
 <div class="container-fluid">
     <div class="row">
+        <!-- Placeholder -->
         <div class="col-4"> </div>
+
+        <!-- Login -->
         <div class="col-sm-8 col-4">
             <form method="POST" style="margin-left: 1cm; margin-top: 3.5cm;">
                 {% csrf_token %}
@@ -19,8 +22,7 @@
                         {% endfor %}
                     </p>
                 {% endfor %}
-                <button class="submit-btn" type="submit" style="border-bottom: 1px solid gray; margin-top: 0.25cm;"> Log in </button>
-                <br><br>
+                <button class="submit-btn" type="submit" style="border-bottom: 1px solid gray; margin-top: 0.25cm;"> Log in </button><br><br>
                 <p>
                     Login using <a href="{% url 'social:begin' 'github' %}" style="border-bottom: 1px solid gray;">Github</a><br>
                     Don't have an account? <a href="{% url 'signup'%}" style="border:none; 
@@ -28,6 +30,8 @@
                 </p>
             </form>
         </div>
+
+        <!-- Placeholder -->
         <div class="col-4"> </div>
     </div>
 </div>

@@ -4,17 +4,17 @@
 {% block content %}
     <main class="main grid-page">
         
+        <!-- Header -->
         <header class="header-2">
             <p>
                 <form style="text-align:right;" action="{% url 'search_results' %}" method="get">
-                    <!-- <span class="site-tagline">sort by </span> -->
-                    <!-- <input type="button" style="padding:0%; border-bottom: 1px solid gray;" name="new" value="new">
-                    <input type="button" style="padding:0%; border-bottom: 1px solid gray;" name="old" value="old">
-                    <input type="button" style="padding:0%; border-bottom: 1px solid gray;" name="title" value="title"> -->
                     <input name="q" type="text" placeholder="type to search" style="text-align:right;">
                 </form> 
             </p>
         </header>
+
+        <!-- Search Results -->
+        <!-- If search results returns one or more item -->
         {% if object_list %}
             <div class="posts">
                 {% for nft in object_list %}
@@ -27,6 +27,7 @@
                 </article> 
                 {% endfor %}           
             </div>
+        <!-- If no results found -->
         {% else %}
             <h1 style="text-align: center;"> 
                 There are no results that match your search query.<br>
@@ -34,6 +35,7 @@
             </h1>
         {% endif %}
 
+        <!-- JS Scripts -->
         <script src="{% static 'js/infinite.min.js' %}"></script>            
     </main>
 {% endblock content %}

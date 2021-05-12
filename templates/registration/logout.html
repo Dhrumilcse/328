@@ -1,19 +1,21 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
 <div class="container-fluid">
     <div class="row">
+        <!-- Placeholder -->
         <div class="col-4"> </div>
+        
+        <!-- Logout -->
         <div class="col-sm-8 col-4">
-           
             <p style="margin-left: 1cm; margin-top: 3.5cm;">You have been successfully logged out.<br><br>
                 <a href="{% url 'login' %}" style="border-bottom: 1px solid gray;">Log in</a> again? <br>
                 or you can just browse <a href="{% url 'home' %}" style="border-bottom: 1px solid gray;">328</a>.
             </p>
-
         </div>
         
+        <!-- Placeholder -->
+        <div class="col-4"> </div>
     </div>
 </div>
 {% endblock content %}

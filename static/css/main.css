@@ -19,7 +19,6 @@
 
 @font-face {
     font-family: "Inter";
-    /* src: url("fonts/CircularStd-Book_grayscale.eot"); */
     src: url("../font/Inter-Regular.woff2") format("woff");
     font-weight: 400l;    
     font-style: normal;
@@ -46,19 +45,8 @@
 	color: var(--c-text)
 }
 
-@media (min-width: 500px) {
-	:root {
-		--f-size: 17px;
-		--f-lineheight: 32px
-	}
-}
-
-@media (min-width: 2000px) {
-	:root {
-		--f-size: 20px;
-		--f-lineheight: 38px
-	}
-}
+/* -------------------------- */
+/* Header & Main */
 
 html,
 body {
@@ -85,12 +73,40 @@ input {
 .primary-section-header {
     padding-top: 5rem;
 	padding-bottom: 2rem;
-    /* border-bottom: 1px solid var(--c-gray-light); */
 }
 
 .site-tagline {
     color:var(--c-gray);
 }
+
+.header {
+	position: sticky;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 8000;
+	padding: 1rem;
+	background: var(--c-bg);
+	text-align: center;
+	line-height: 1rem;
+	z-index: 999999
+}
+
+.header-2 {
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 8000;
+	padding-bottom: 0.5rem;
+	padding-right: 1rem;
+	background: var(--c-bg);
+	text-align: center;
+	line-height: 1rem;
+	z-index: 999999
+}
+
+/* -------------------------- */
+/* Body */
 
 .thumbnail {
 	transition: opacity 1s;
@@ -123,7 +139,10 @@ input {
 	right: 0;
 	bottom: 0;
 	left: 0;
-	width: 100%
+	width: 100%;
+	transition-property: opacity;
+	transition-duration: 400ms;
+	transition-timing-function: ease-in-out
 }
 
 .thumbnail-link {
@@ -143,15 +162,6 @@ input {
 	width: 50%;
 }
 
-.menu-link,
-.about,
-.about a,
-.thumbnail-img {
-	transition-property: opacity;
-	transition-duration: 400ms;
-	transition-timing-function: ease-in-out
-}
-
 .menu-link:hover,
 .thumbnail-img.loaded:hover {
 	opacity: .65
@@ -159,32 +169,6 @@ input {
 
 .about a:hover {
 	opacity: 1
-}
-
-.header {
-	position: sticky;
-	top: 0;
-	left: 0;
-	right: 0;
-	z-index: 8000;
-	padding: 1rem;
-	background: var(--c-bg);
-	text-align: center;
-	line-height: 1rem;
-	z-index: 999999
-}
-
-.header-2 {
-	top: 0;
-	left: 0;
-	right: 0;
-	z-index: 8000;
-	padding-bottom: 0.5rem;
-	padding-right: 1rem;
-	background: var(--c-bg);
-	text-align: center;
-	line-height: 1rem;
-	z-index: 999999
 }
 
 .alignleft {
@@ -208,37 +192,8 @@ input {
 	opacity: 1
 }
 
-.about {
-	display: grid;
-	grid-column-gap: var(--spacer);
-	grid-template-columns: 1fr;
-	padding: 3rem var(--spacer) var(--spacer)
-}
-
-@media (min-width: 750px) {
-	.about {
-		grid-template-columns: repeat(2, 1fr)
-	}
-}
-
-.about-content {
-	max-width: 55ch
-}
-
-@media (min-width: 750px) {
-	.about-content {
-		grid-column-start: 2
-	}
-}
-
-.about-content p,
-.about-content h2 {
-	margin-bottom: 1rem
-}
-
-.about-content a {
-	opacity: 0.65
-}
+/* -------------------------- */
+/* Posts - Buy */
 
 .posts {
 	padding: 0 3px;
@@ -287,6 +242,39 @@ input {
 	grid-gap: 3px
 }
 
+.single-page {
+	padding: 0 2px;
+	display: flex;
+	flex-direction: column;
+	min-height: calc(100vh - 5rem)
+}
+
+.single-images {
+	width: 50%;
+	margin-top: 2rem;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 1rem;
+	max-width: 40rem
+}
+
+/* -------------------------- */
+/* Media Queries */
+
+@media (min-width: 500px) {
+	:root {
+		--f-size: 17px;
+		--f-lineheight: 32px
+	}
+}
+
+@media (min-width: 2000px) {
+	:root {
+		--f-size: 20px;
+		--f-lineheight: 38px
+	}
+}
+
 @media (min-width: 700px) {
 	.posts-buy-thumbnails  {
 		grid-template-columns: 1fr 1fr
@@ -298,7 +286,6 @@ input {
 		grid-template-columns: 1fr 1fr 1fr;
 	}
 }
-
 
 @media (min-width: 910px) {
 	.posts-buy-thumbnails  {
@@ -316,48 +303,4 @@ input {
 	.posts {
 		grid-template-columns: repeat(auto-fill, minmax(450px, 1fr))
 	}
-}
-
-
-.single-page {
-	padding: 0 2px;
-	display: flex;
-	flex-direction: column;
-	min-height: calc(100vh - 5rem)
-}
-
-.single-images {
-	width: 50%;
-	margin-top: 2rem;
-	margin-left: auto;
-	margin-right: auto;
-	margin-bottom: 1rem;
-	max-width: 40rem
-}
-
-.single-info {
-	text-align: center
-}
-
-[data-temp="error"] {
-	height: 100%
-}
-
-[data-temp="error"] .header,
-[data-temp="error"] .about {
-	display: none
-}
-
-[data-temp="error"] .error-page,
-[data-temp="error"] body {
-	width: 100%;
-	height: 100%
-}
-
-.error-page {
-	display: flex;
-	padding: var(--spacer);
-	text-align: center;
-	justify-content: center;
-	align-items: center
 }

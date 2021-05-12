@@ -2,19 +2,16 @@
 {% load static %}
 
 {% block content %}
-
+    <!-- Header -->
     <header class="header-2">
         <p>
             <form style="text-align:right;" action="{% url 'search_results' %}" method="get">
-                <!-- <span class="site-tagline">sort by </span> -->
-                <!-- <input type="button" style="padding:0%; border-bottom: 1px solid gray;" name="new" value="new">
-                <input type="button" style="padding:0%; border-bottom: 1px solid gray;" name="old" value="old">
-                <input type="button" style="padding:0%; border-bottom: 1px solid gray;" name="title" value="title"> -->
                 <input name="q" type="text" placeholder="type to search" style="text-align:right;">
             </form> 
         </p>
     </header>
 
+    <!-- Main Grid - Thumbnail Images -->
     <main class="main grid-page">
         <div class="posts">
             {% for nft in object_list %}
@@ -26,14 +23,18 @@
                 </a>
             </article> 
             {% endfor %} 
-        </div>   
-            <h1 style="padding: 1rem; text-align: center;">
-                {% if user.is_authenticated %}
-                    &nbsp;
-                {% else %}
-                    <a href="{% url 'signup' %}" style="border-bottom: 1px solid gray;">Sign up</a> now to join {{user_count}} active users.
-                {% endif %}
-            </h1>       
+        </div>  
+        
+        <!-- If user has not signed-in, prompt another attempt-->
+        <h1 style="padding: 1rem; text-align: center;">
+            {% if user.is_authenticated %}
+                &nbsp;
+            {% else %}
+                <a href="{% url 'signup' %}" style="border-bottom: 1px solid gray;">Sign up</a> now to join active community of {{user_count}} users
+            {% endif %}
+        </h1>
+
+        <!-- JS Scripts -->
         <script src="{% static 'js/infinite.min.js' %}"></script>            
     </main>
 {% endblock content %}
