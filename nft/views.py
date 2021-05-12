@@ -75,10 +75,10 @@ class UploadNftView(CreateView):
     template_name = 'upload.html'
     success_url = reverse_lazy('profile')
 
-    def add_user(self, form):
+    def form_valid(self, form):
         """ Add authenticated user to the form if form is validated  """
         form.instance.uploaded_by = self.request.user
-        return super(UploadNftView, self).add_user(form)
+        return super(UploadNftView, self).form_valid(form)
 
 def deleteNftView(request, id):
     """ Delete Object (given ID) and redirects to confirmation page 
