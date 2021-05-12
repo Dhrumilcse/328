@@ -6,43 +6,73 @@ import tempfile
 from django.test import override_settings
 from django.contrib.auth.models import User
 
-# Helper function for to create a temp image for image test
 def get_temporary_image(temp_file):
+    """ Returns a temporary image.png with size 200x200 """
     size = (200, 200)
     color = (255, 0, 0, 0)
     image = Image.new("RGBA", size, color)
     image.save(temp_file, 'png')
     return temp_file
 
-# Home Page tests
 class HomePageTest(TestCase):
+    """ Test Cases for Home Page 
+    
+    Methods
+    -------
+    test_home_page_status_code(self)
+        Returns True if Status code is 200 OK
+   
+    test_anonymous_cannot_see_page(self)
+        Returns True if accessing /upload endpoint without login redirects to login
 
-    # Check the status code at home view
+    test_home_page_redirect(self)
+        Returns True if redirected to homepage correctly
+    """
+
     def test_home_page_status_code(self):
+        """ Returns True if Status code is 200 OK """
         response = self.client.get('/')
         self.assertEqual(response.status_code, 200)
     
-    # Cannot upload without login
     def test_anonymous_cannot_see_page(self):
+        """ Returns True if accessing /upload endpoint without login redirects to login """
         response = self.client.get(reverse("upload"))
         self.assertRedirects(response, "/accounts/login/?next=/upload/")
 
-    # Test redirecting to home.html and response that contain list of objects stored in nft
-    def test_nft_list_view(self):
+    def test_home_page_redirect(self):
+        """ Returns True if redirected to homepage correctly """
         response = self.client.get(reverse('home'))
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, 'just a test')
         self.assertTemplateUsed(response, 'home.html')
 
-#Upload View Test
-class HomePageTest(TestCase):
+class ModelTest(TestCase):
+    """ Test Cases for Model 
     
-    # Setup object
+    Methods
+    -------
+    setUp(self)
+        Sets up test user and add test data to the model 
+   
+    test_title_content(self)
+        Returns True if successfully retrieves title
+
+    test_price_content(self)
+        Returns True if successfully retrieves price
+
+    test_tags_content(self)
+        Returns True if successfully retrieves tags
+    
+    test_user_login(self)
+        Returns True if if user can log-in
+    """
+   
     def setUp(self):
+        """ Sets up test user and add test data to the model """
+
         self.user = User.objects.create_user(
-            username='testuser',
+            username='dhrumil',
             email='test@email.com',
-            password='secret'
+            password='iloveshopify'
         )
         
         self.nft = Nft.objects.create(
@@ -52,34 +82,46 @@ class HomePageTest(TestCase):
             uploaded_by=self.user,
         )
 
-    # Check the content of title
     def test_title_content(self):
+        """ Returns True if successfully retrieves title """
         nft = Nft.objects.get()
         expected_object_name = f'{nft.title}'
         self.assertEquals(expected_object_name, 'Reminder: Start that business')
 
-    # Test price content
     def test_price_content(self):
+        """ Returns True if successfully retrieves price """
         nft=Nft.objects.get()
         expected_object_name = f'{nft.price}'
         self.assertEqual(expected_object_name, '420.69')
 
-    # Check the content of tags
-    def test_title_content(self):
+    def test_tags_content(self):
+        """ Returns True if successfully retrieves tags """
         nft = Nft.objects.get()
         expected_object_name = f'{nft.tags}'
         self.assertEquals(expected_object_name, 'shopify')
 
-    #Check user login
-    def test_title_content(self):
-        nft = Nft.objects.get()
-        expected_object_name = f'{nft.tags}'
-        self.assertEquals(expected_object_name, 'shopify')
+    def test_user_login(self):
+        """ Returns True if if user can log-in """
+        self.assertTrue(self.client.login(username='dhrumil', password='iloveshopify'))
 
-# Image upload test
-class ImageUploadTest(TestCase):
+class ImageTest(TestCase):
+    """ Test Cases for Image 
+    
+    Methods
+    -------
+    setUp(self)
+        Sets up test user and log-in (required for image upload and delete)
+
+    test_image_upload(self)
+        Returns True if Image can be successfully uploaded
+    
+    test_image_delete(self)
+        Returns True if Image can be successfully deleted
+
+    """
 
     def setUp(self):
+        """ Sets up test user and log-in (required for image upload and delete) """
         self.user = User.objects.create_user(
             username='dhrumil',
             email='test@email.com',
@@ -91,6 +133,7 @@ class ImageUploadTest(TestCase):
     # Changing media_root to a temp dir to prevent filiing our media dir with garbage
     @override_settings(MEDIA_ROOT=tempfile.gettempdir())
     def test_image_upload(self):
+        """ Returns True if Image can be successfully uploaded """
         temp_file = tempfile.NamedTemporaryFile()
         test_image = get_temporary_image(temp_file)
         image = Nft.objects.create(image=test_image.name, uploaded_by=self.user)
@@ -98,6 +141,7 @@ class ImageUploadTest(TestCase):
     
     @override_settings(MEDIA_ROOT=tempfile.gettempdir())
     def test_image_delete(self):
+        """ Returns True if Image can be successfully deleted """
         temp_file = tempfile.NamedTemporaryFile()
         test_image = get_temporary_image(temp_file)
         image = Nft.objects.create(image=test_image.name, uploaded_by=self.user, id=1)

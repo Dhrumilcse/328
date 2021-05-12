@@ -25,7 +25,6 @@ SECRET_KEY = "SECRET_KEY"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
-
 ALLOWED_HOSTS = ['nft328.herokuapp.com','127.0.0.1']
 
 # Application definition
@@ -37,17 +36,17 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'nft',
-    'storages',
-    'accounts',
-    'widget_tweaks',
-    'payments.apps.PaymentsConfig', 
-    'social_django',
+    'nft', # main app
+    'storages', # for s3
+    'accounts', # app to handle users
+    'widget_tweaks', # prettify forms
+    'payments.apps.PaymentsConfig',  # stripe
+    'social_django', # OAuth2 for Github
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware', # whitenoise: static files
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -148,16 +147,19 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# Media
+# Media Location
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-#Log-in
+# Login redirect
 LOGIN_REDIRECT_URL = 'home'
 LOGIN_URL = 'login'
 
-# S3
-# Configured ENV variables in Heroku 
+#--------------------------------------------------------------------
+# Note: Configured all keys as ENV variables in Heroku for production
+#--------------------------------------------------------------------
+
+# AWS S3 Configuration
 AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
 AWS_STORAGE_BUCKET_NAME = os.environ.get('S3_BUCKET_NAME')
@@ -180,4 +182,5 @@ STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY')
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
 
+# Staticfiles sotrage
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'

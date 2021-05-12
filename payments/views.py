@@ -1,27 +1,29 @@
-from django.shortcuts import render
-import requests
-from django.contrib.auth.decorators import login_required
+# Model
 from nft.models import Nft
-from django.conf import settings
-from django.http.response import JsonResponse
+
+# View
 from django.views.generic import TemplateView
 from django.views.decorators.csrf import csrf_exempt
-import stripe
-import random
 
-#Log in required for buy view
+# Request, Response, Render, Decorators
+from django.shortcuts import render
+import requests, random
+from django.http.response import JsonResponse
+from django.contrib.auth.decorators import login_required
+
+# Misc, Payment(Stripe)
+from django.conf import settings
+import stripe
+
 @login_required
 def buyView(request, id):
+    """ Returns an item object to buy (given ID) and object list of recommended NFTs"""
     
-    # Randomly select 3 nft to recommend
     all_nft = Nft.objects.all()
     random_nft = random.sample(list(all_nft), 3)
     buy_nft = Nft.objects.get(id=id)
 
-    # Basic Recommendation using tags - WIP
-    # all_objects = Nft.objects.all()
-    # all_tags = []
-    # for i in range(len(all_objects)):
+    # TODO: Basic Recommendation using tags
 
     context = {
         'buy_nft': buy_nft,
@@ -30,15 +32,16 @@ def buyView(request, id):
 
     return render(request, 'buy.html', context)
 
-#Stripe setup
 @csrf_exempt
 def stripe_config(request):
+    """ Stripe Setup, returns json containing public key """
     if request.method == 'GET':
         stripe_config = {'publicKey': settings.STRIPE_PUBLISHABLE_KEY}
         return JsonResponse(stripe_config, safe=False)
 
 @csrf_exempt
 def create_checkout_session(request):
+    """ Returns Json response containing session ID if successful """
     if request.method == 'GET':
         domain_url = 'https://nft328.herokuapp.com/'
         stripe.api_key = settings.STRIPE_SECRET_KEY
@@ -61,10 +64,10 @@ def create_checkout_session(request):
         except Exception as e:
             return JsonResponse({'error': str(e)})
 
-#Success redirect
 class SuccessView(TemplateView):
+    """ Redirects to success.html upon completion of payment """
     template_name = 'success.html'
 
-#Cancel redirect
 class CancelledView(TemplateView):
+    """ Redirects to cancelled.html upon cancelled payment """
     template_name = 'cancelled.html'
