@@ -3,6 +3,9 @@ A minimal platform to let you buy and sell nfts, built with Django, PostgreSQL, 
 
 https://user-images.githubusercontent.com/17984133/116902775-8b7f7000-ac09-11eb-87ca-5800b4f42867.mp4
 
+## Workflow
+<img width="1416" alt="workflow" src="https://user-images.githubusercontent.com/17984133/118296994-978dec00-b4ab-11eb-8af4-d79bf97ad8bc.png">
+
 
 ## Features
 1. Authentication and authorization using Django's inbuilt system which uses [PBKDF2](https://en.wikipedia.org/wiki/PBKDF2) algorithm with a SHA256 hash to store passwords. In addition, extended authentication support for third-party, in this case Github, using OAuth 2.0
