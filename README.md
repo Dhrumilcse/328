@@ -1,5 +1,5 @@
 # 328
-A minimal platform to let you buy and sell nfts, built with Django, PostgreSQL, and Heroku. Submission for Shopify Data Developer Challenge Fall 2021.
+A minimal platform to let you buy and sell nfts, built with Django, PostgreSQL, and Heroku.
 
 https://user-images.githubusercontent.com/17984133/116902775-8b7f7000-ac09-11eb-87ca-5800b4f42867.mp4
 
